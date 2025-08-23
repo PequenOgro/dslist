@@ -21,8 +21,12 @@ public class GameListController {
     @Autowired
     private GameListService gameListService;
 
-    private GameService gameService;
+    private final GameService gameService;
 
+    // INJEÇÃO POR CONSTRUTOR (Spring injeta automaticamente)
+    public GameListController(GameService gameService) {
+        this.gameService = gameService;
+    }
     @GetMapping
     public List<GameListDTO> findAll(){
         List<GameListDTO> result = gameListService.findAll();
